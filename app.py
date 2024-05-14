@@ -1,4 +1,5 @@
 from flask import Flask, render_template, request
+from models.db import get_connection
 
 app = Flask(__name__, template_folder='templates')
 
@@ -9,22 +10,37 @@ def index():
 @app.route('/submit', methods=['POST'])
 def submit():
     if request.method == 'POST':
-        name = request.form['name']
-        email = request.form['email']
-        student_id = request.form['student_id']
-        major = request.form['major']
-        group = request.form['group']
-        professor = request.form['professor']
-        documents = request.files.getlist('documents')
+        carrera = request.form['carrera']
+        grupo = request.form['grupo']
+        tutor = request.form['tutor']
+        actividad = request.form['documentos']
+        asistencia = request.form['asistencia']
+        
+        # Obtén el valor de seguimiento ('h' o 'm')
+        seguimiento = request.form.get('hm', '')
 
-        # Procesar los documentos entregables
-        if documents:
-            documents_info = [f.filename for f in documents]
-        else:
-            documents_info = ['No reportado']
+        # Valida que 'seguimiento' tenga un valor válido
+        if seguimiento not in ['h', 'm']:
+            # Establece un valor predeterminado en caso de que no haya sido seleccionado
+            seguimiento = ''
 
-        return render_template('submission.html', name=name, email=email, student_id=student_id,
-                               major=major, group=group, professor=professor, documents=documents_info)
+        fecha = request.form['fecha']
+        causa_baja = request.form['causa_baja']
+        canalizacion = request.form['canalizacion']
+
+        connection = get_connection()
+        cursor = connection.cursor()
+
+        query = "INSERT INTO entregables (Carrera, Grupo, Tutor, Actividad, Asistencia, SegInividual, SegAcc, SegAccFech, Baja, Canalizacion) VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s, %s)"
+        values = (carrera, grupo, tutor, actividad, asistencia, seguimiento, '', fecha, causa_baja, canalizacion)
+
+        cursor.execute(query, values)
+        connection.commit()
+
+        cursor.close()
+        connection.close()
+
+        return "Los datos han sido insertados correctamente en la base de datos."
 
 if __name__ == '__main__':
     app.run(debug=True)
