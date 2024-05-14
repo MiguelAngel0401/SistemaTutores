@@ -4,28 +4,34 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Formulario de Reporte de Tutores</title>
+    <Style>
+        body {
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+            background-color:whitesmoke;
+        }
+        .form-container {
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 15px;
+            max-width: 500px;
+            margin: auto;
+            box-shadow: 0 20px 20px rgba(0, 0, 0, 0.8);
+        }
+
+        .form-container .form-group label {
+            font-weight: bold;
+        }
+    </Style>
 </head>
 <body>
-    <h1>Formulario de Reporte de Tutores</h1>
+    <center>
+        <h1>Formulario de Reporte de Tutores</h1>
+    </center>
     <form action="/submit" method="POST">
+        <div class="form-container">
 
-        
-        <label for="tutor">Nombre del Tutor:</label><br>
-        <select id="profe" name="Profes">
-            <option value="Profe0">Jose Manuel Flores Juarez</option>
-            <option value="Profe1">Diana Lizeth Ahuatzi Reyes</option>
-            <option value="Profe2">Alfredo Garcia Ruiz</option>
-            <option value="Profe3">Elizabeth Cortes Ramos</option>
-            <option value="Profe4">Maricela Gress Roldan</option>
-            <option value="Profe5">Jose Marin Rugerio Atriano</option>
-            <option value="Profe6">Sonia Lopez Rodriguez</option>
-            <option value="Profe7">Margarita Lima Esteban</option>
-            <option value="Profe8">Juan Gabriel Valencia Muñoz</option>
-            <option value="Profe9">Miguel Torreon Hernandez</option>
-            <option value="Profe10">Francisco Lopez Briones</option>
-            <option value="Profe11">Aldo Giovani Luria Garcia</option>
-
-        </select><br>
 
         <label for="major">Carrera:</label><br>
         <select id="major" name="major">
@@ -35,8 +41,8 @@
             <option value="tsu1">Ingenieria en Desarrollo y Gestion de Software</option>
             <option value="tsu2">Ingenieria en Redes Inteligentes y Ciberseguridad</option>
             <option value="tsu3">Ingenieria en Entornos Virtuales y Negocios Digitales</option>
-
-        </select><br>
+        </select>
+        <br>
 
         <label for="grupo">Grupo:</label><br>
         <select id="major" name="major">
@@ -58,12 +64,48 @@
             <option value="grupo15">9B</option>
             <option value="grupo16">10A</option>
             <option value="grupo16">10B</option>
-        </select><br>
+        </select>
+        <br>
 
-        <label for="documentos">Documentos Entregables:</label><br>
+        <label for="tutor">Nombre del Tutor:</label><br>
+        <select id="profe" name="Profes">
+            <option value="Profe0">Jose Manuel Flores Juarez</option>
+            <option value="Profe1">Diana Lizeth Ahuatzi Reyes</option>
+            <option value="Profe2">Alfredo Garcia Ruiz</option>
+            <option value="Profe3">Elizabeth Cortes Ramos</option>
+            <option value="Profe4">Maricela Gress Roldan</option>
+            <option value="Profe5">Jose Marin Rugerio Atriano</option>
+            <option value="Profe6">Sonia Lopez Rodriguez</option>
+            <option value="Profe7">Margarita Lima Esteban</option>
+            <option value="Profe8">Juan Gabriel Valencia Muñoz</option>
+            <option value="Profe9">Miguel Torreon Hernandez</option>
+            <option value="Profe10">Francisco Lopez Briones</option>
+            <option value="Profe11">Aldo Giovani Luria Garcia</option>
+        </select>
+        <br><br>
+
+        <label for="documentos">Nombre Actividad:</label><br>
+        <textarea id="documentos" name="documentos"></textarea><br><br>
+        <label for="documentos">Lista de asistencia a sesión:</label><br>
+        <textarea id="documentos" name="documentos"></textarea><br><br>
+
+        <label for="documentos">Seguimiento de tutoría individual del estudiante:</label><br>
+        <p>
+            <input type="radio" name="hm" value="h"> Entragado
+            <input type="radio" name="hm" value="m"> No Entragado
+        </p>
+
+        <label for="documentos">Fecha:</label><br>
+        <input type="date" name="fecha"><br><br>
+
+        <label for="documentos">Encuesta de causa de baja:</label><br>
+        <textarea id="documentos" name="documentos"></textarea><br><br>
+
+        <label for="documentos">Canalización:</label><br>
         <textarea id="documentos" name="documentos"></textarea><br><br>
 
         <input type="submit" value="Enviar">
+        </div>
     </form>
 </body>
 </html>
