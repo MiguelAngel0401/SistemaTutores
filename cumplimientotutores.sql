@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 14-05-2024 a las 02:20:33
+-- Tiempo de generación: 15-05-2024 a las 02:30:22
 -- Versión del servidor: 10.4.32-MariaDB
 -- Versión de PHP: 8.2.12
 
@@ -33,9 +33,15 @@ CREATE TABLE `entregables` (
   `Grupo` varchar(2) NOT NULL,
   `Tutor` text NOT NULL,
   `Actividad` text NOT NULL,
-  `Asistencia` int(20) NOT NULL,
-  `SegInividual` int(11) NOT NULL,
-  `SegAcc` tinyint(1) NOT NULL,
+  `Actividad2` text NOT NULL,
+  `Actividad3` text NOT NULL,
+  `Actividad4` text NOT NULL,
+  `Asistencia` text NOT NULL,
+  `Asistencia2` text NOT NULL,
+  `Asistencia3` text NOT NULL,
+  `Asistencia4` text NOT NULL,
+  `SegInividual` varchar(35) NOT NULL,
+  `SegAcc` binary(1) NOT NULL,
   `SegAccFech` datetime NOT NULL,
   `Baja` text NOT NULL,
   `Canalizacion` text NOT NULL
@@ -50,6 +56,16 @@ CREATE TABLE `entregables` (
 --
 ALTER TABLE `entregables`
   ADD PRIMARY KEY (`No`);
+
+--
+-- AUTO_INCREMENT de las tablas volcadas
+--
+
+--
+-- AUTO_INCREMENT de la tabla `entregables`
+--
+ALTER TABLE `entregables`
+  MODIFY `No` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

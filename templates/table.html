@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body {
+            background-color: whitesmoke;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 0 15px; /* Agregado para asegurar un espacio entre el contenedor y los bordes del viewport */
+        }
+
+        .header {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+
+        .header h1 {
+            color: #000;
+            font-size: 36px;
+        }
+
+        .table-container {
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 15px;
+            box-shadow: 0 20px 20px rgba(0, 0, 0, 0.8);
+            overflow-x: auto; /* Para habilitar la barra de desplazamiento horizontal si la tabla es demasiado ancha */
+        }
+
+        table {
+            width: 100%; /* La tabla ocupa el 100% del ancho del contenedor */
+            border-collapse: collapse; /* Los bordes de las celdas se fusionan */
+        }
+
+        th, td {
+            padding: 8px; /* Espaciado interno de las celdas */
+            border: 1px solid #ddd; /* Borde de las celdas */
+            text-align: left; /* Alineación del texto a la izquierda */
+        }
+
+        th {
+            background-color: #f2f2f2; /* Color de fondo de las celdas del encabezado */
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>Lista de Productos</h1>
+        </div>
+    
+        <div class="table-container">
+            <table class="table table-bordered">
+                <tr>
+                    <th>No</th>
+                    <th>Carrera</th>
+                    <th>Grupo</th>
+                    <th>Tutor</th>
+                    <th>Actividad</th>
+                    <th>Actividad</th>
+                    <th>Actividad</th>
+                    <th>Actividad</th>
+                    <th>Asistencia</th>
+                    <th>Asistencia</th>
+                    <th>Asistencia</th>
+                    <th>Asistencia</th>
+                    <th>Seguimiento de tutoría individual del estudiante</th>
+                    <th>Seguimiento de la acción tutorial</th>
+                    <th>Fecha</th>
+                    <th>Encuesta de causa de baja</th>
+                    <th>Canalización</th>
+                </tr>
+                {% for data in data %}
+                <tr>
+                    <td>{{ data['No'] }}</td>
+                    <td>{{ data['Carrera'] }}</td>
+                    <td>{{ data['Grupo'] }}</td>
+                    <td>{{ data['Tutor'] }}</td>
+                    <td>{{ data['Actividad'] }}</td>
+                    <td>{{ data['Actividad2'] }}</td>
+                    <td>{{ data['Actividad3'] }}</td>
+                    <td>{{ data['Actividad4'] }}</td>
+                    <td>{{ data['Asistencia'] }}</td>
+                    <td>{{ data['Asistencia2'] }}</td>
+                    <td>{{ data['Asistencia3'] }}</td>
+                    <td>{{ data['Asistencia4'] }}</td>
+                    <td>{{ data['SegInividual'] }}</td>
+                    <td>{{ data['SegAcc'] }}</td>
+                    <td>{{ data['SegAccFech'] }}</td>
+                    <td>{{ data['Baja'] }}</td>
+                    <td>{{ data['Canalizacion'] }}</td>
+                </tr>
+                {% endfor %}
+            </table>
+        </div>
+
+    </div>
+</body>
+</html>
