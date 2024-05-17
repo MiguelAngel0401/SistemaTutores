@@ -1,5 +1,5 @@
-from flask import Flask, render_template, request
-from models.form import submitForm, get_form
+from flask import Flask, render_template
+from views.add_register import submitForm, get_form
 
 app = Flask(__name__, template_folder='templates')
 

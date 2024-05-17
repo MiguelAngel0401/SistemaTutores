@@ -1,4 +1,4 @@
-from flask import render_template, request, redirect
+from flask import request
 from models.db import get_connection
 
 def submitForm():
@@ -127,14 +127,28 @@ def get_form():
     data_tuplas = cursor.fetchall()
     cursor.close()
     conector.close()
-    data = [{'No': data[0], 'Carrera': data[1], 'Grupo': data[2], 'Tutor': data[3], 'Actividad': data[4],
-            'Actividad2': data[5], 'Actividad3': data[6], 'Actividad4': data[7], 'Asistencia': data[8],
-            'Asistencia2': data[9], 'Asistencia3': data[10], 'Asistencia4': data[11], 'SegInividual': data[12], 'SegAcc': data[13],
-            'SegAccFech': data[14], 'Baja': data[15], 'Canalizacion': data[16],} for data in data_tuplas]
-    return data
+    data = []
+    for data_tuple in data_tuplas:
+        if len(data_tuple) >= 17:
+            seg_acc_status = 'Entregado' if data_tuple[13] == 1 else 'No Entregado'
+            data.append({
+                'No': data_tuple[0],
+                'Carrera': data_tuple[1],
+                'Grupo': data_tuple[2],
+                'Tutor': data_tuple[3],
+                'Actividad': data_tuple[4],
+                'Actividad2': data_tuple[5],
+                'Actividad3': data_tuple[6],
+                'Actividad4': data_tuple[7],
+                'Asistencia': data_tuple[8],
+                'Asistencia2': data_tuple[9],
+                'Asistencia3': data_tuple[10],
+                'Asistencia4': data_tuple[11],
+                'SegInividual': data_tuple[12],
+                'SegAcc': seg_acc_status,
+                'SegAccFech': data_tuple[14],
+                'Baja': data_tuple[15],
+                'Canalizacion': data_tuple[16],
+            })
 
-#     sale = []
-#     for sale_tuple in sale_tuplas:
-#         if len(sale_tuple) >= 6:
-#             sale.append({'ticket': sale_tuple[0], 'id_user': sale_tuple[1], 'id_product': sale_tuple[2], 'amount': sale_tuple[3], 'total': sale_tuple[4], 'date': sale_tuple[5]})
-#     return sale
+    return data
