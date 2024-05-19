@@ -4,26 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Formulario de Reporte de Tutores</title>
-    <Style>
-        body {
-            display: flex;
-            flex-direction: column;
-            min-height: 100vh;
-            background-color:whitesmoke;
-        }
-        .form-container {
-            background-color: #fff;
-            padding: 20px;
-            border-radius: 15px;
-            max-width: 500px;
-            margin: auto;
-            box-shadow: 0 20px 20px rgba(0, 0, 0, 0.8);
-        }
-
-        .form-container .form-group label {
-            font-weight: bold;
-        }
-    </Style>
+    <link rel="stylesheet" href="../static/css/styles.css">
 </head>
 <body>
     <center>
@@ -32,89 +13,126 @@
     <form action="/submit" method="POST">
         <div class="form-container">
 
+            <div class="form-group">
+                <label for="tutor">Nombre del Tutor:</label>
+                <select id="tutor" name="tutor" required>
+                    <option value="Jose Manuel Flores Juarez">Jose Manuel Flores Juarez</option>
+                    <option value="Diana Lizeth Ahuatzi Reyes">Diana Lizeth Ahuatzi Reyes</option>
+                    <option value="Alfredo Garcia Ruiz">Alfredo Garcia Ruiz</option>
+                    <option value="Elizabeth Cortes Ramos">Elizabeth Cortes Ramos</option>
+                    <option value="Maricela Gress Roldan">Maricela Gress Roldan</option>
+                    <option value="Jose Marin Rugerio Atriano">Jose Marin Rugerio Atriano</option>
+                    <option value="Sonia Lopez Rodriguez">Sonia Lopez Rodriguez</option>
+                    <option value="Margarita Lima Esteban">Margarita Lima Esteban</option>
+                    <option value="Juan Gabriel Valencia Muñoz">Juan Gabriel Valencia Muñoz</option>
+                    <option value="Miguel Torreon Hernandez">Miguel Torreon Hernandez</option>
+                    <option value="Francisco Lopez Briones">Francisco Lopez Briones</option>
+                    <option value="Aldo Giovani Luria Garcia">Aldo Giovani Luria Garcia</option>
+                </select>
+            </div>
 
-        <label for="carrera">Carrera:</label><br>
-        <select id="carrera" name="carrera">
-            <option value="tsu0">Tecnologias de la Informacion Area Desarrollo de Software Multiplataforma</option>
-            <option value="tsu1">Tecnologias de la Informacion Area Infraestructura de Redes Digitales</option>
-            <option value="tsu2">Tecnologias de la Informacion Area Entornos Virtuales y Negocios Digitales</option>
-            <option value="tsu3">Ingenieria en Desarrollo y Gestion de Software</option>
-            <option value="tsu4">Ingenieria en Redes Inteligentes y Ciberseguridad</option>
-            <option value="tsu5">Ingenieria en Entornos Virtuales y Negocios Digitales</option>
-        </select>
-        <br>
+            <div class="form-group">
+                <label for="carrera">Carrera:</label>
+                <select id="carrera" name="carrera" required>
+                    <option value="tsu0">Tecnologías de la Información Área Desarrollo de Software Multiplataforma</option>
+                    <option value="tsu1">Tecnologías de la Información Área Infraestructura de Redes Digitales</option>
+                    <option value="tsu2">Tecnologías de la Información Área Entornos Virtuales y Negocios Digitales</option>
+                    <option value="tsu3">Ingeniería en Desarrollo y Gestión de Software</option>
+                    <option value="tsu4">Ingeniería en Redes Inteligentes y Ciberseguridad</option>
+                    <option value="tsu5">Ingeniería en Entornos Virtuales y Negocios Digitales</option>
+                </select>
+            </div>
 
-        <label for="grupo">Grupo:</label><br>
-        <select id="grupo" name="grupo">
-            <option value="grupo0">1A</option>
-            <option value="grupo1">1B</option>
-            <option value="grupo2">2A</option>
-            <option value="grupo3">2B</option>
-            <option value="grupo4">3A</option>
-            <option value="grupo5">3B</option>
-            <option value="grupo6">4A</option>
-            <option value="grupo7">4B</option>
-            <option value="grupo8">5A</option>
-            <option value="grupo9">5B</option>
-            <option value="grupo10">6A</option>
-            <option value="grupo11">6B</option>
-            <option value="grupo12">7A</option>
-            <option value="grupo13">7B</option>
-            <option value="grupo14">8A</option>
-            <option value="grupo15">8B</option>
-            <option value="grupo16">9A</option>
-            <option value="grupo17">9B</option>
-            <option value="grupo18">10A</option>
-            <option value="grupo19">10B</option>
-        </select>
-        <br>
+            <div class="form-group">
+                <label for="grupo">Grupo:</label>
+                <select id="grupo" name="grupo" required>
+                    <option value="1A">1A</option>
+                    <option value="1B">1B</option>
+                    <option value="2A">2A</option>
+                    <option value="2B">2B</option>
+                    <option value="3A">3A</option>
+                    <option value="3B">3B</option>
+                    <option value="4A">4A</option>
+                    <option value="4B">4B</option>
+                    <option value="5A">5A</option>
+                    <option value="5B">5B</option>
+                    <option value="6A">6A</option>
+                    <option value="6B">6B</option>
+                    <option value="7A">7A</option>
+                    <option value="7B">7B</option>
+                    <option value="8A">8A</option>
+                    <option value="8B">8B</option>
+                    <option value="9A">9A</option>
+                    <option value="9B">9B</option>
+                    <option value="10A">10A</option>
+                    <option value="10B">10B</option>
+                </select>
+            </div>
 
-        <label for="tutor">Nombre del Tutor:</label><br>
-        <select id="tutor" name="tutor">
-            <option value="Profe0">Jose Manuel Flores Juarez</option>
-            <option value="Profe1">Diana Lizeth Ahuatzi Reyes</option>
-            <option value="Profe2">Alfredo Garcia Ruiz</option>
-            <option value="Profe3">Elizabeth Cortes Ramos</option>
-            <option value="Profe4">Maricela Gress Roldan</option>
-            <option value="Profe5">Jose Marin Rugerio Atriano</option>
-            <option value="Profe6">Sonia Lopez Rodriguez</option>
-            <option value="Profe7">Margarita Lima Esteban</option>
-            <option value="Profe8">Juan Gabriel Valencia Muñoz</option>
-            <option value="Profe9">Miguel Torreon Hernandez</option>
-            <option value="Profe10">Francisco Lopez Briones</option>
-            <option value="Profe11">Aldo Giovani Luria Garcia</option>
-        </select>
-        <br><br>
+            <div class="form-group">
+                <label for="tutor">Parcial:</label>
+                <select id="tutor" name="tutor" required>
+                    <option value="1parcial">1 Parcial</option>
+                    <option value="2parcial">2 Parcial</option>
+                    <option value="3parcial">3 Parcial</option>
+                    <option value="4parcial">4 Parcial</option>
+                </select>
+            </div>
 
-        <hr>
+            <div class="form-group">
+                <label for="actividad">Nombre Actividad:</label>
+                <input type="text" id="actividad" name="actividad" required>
+            </div>
 
-        <label for="documentos">Nombre Actividad:</label><br>
-        <textarea id="documentos" name="documentos"></textarea><br><br>
+            <div class="form-group">
+                <label for="asistencia">Lista de asistencia a sesión:</label>
+                <div class="radio-group">
+                    <input type="radio" id="si" name="asistencia" value="1" required>
+                    <label for="si">Si</label>
+                    <input type="radio" id="no" name="asistencia" value="0" required>
+                    <label for="no">No</label>
+                </div>
+            </div>
 
-        <label for="asistencia">Lista de asistencia a sesión:</label><br>
-        <textarea id="asistencia" name="asistencia"></textarea><br><br>
+            <div class="form-group">
+                <label for="seguimiento_individual">Seguimiento de tutoría individual del estudiante:</label>
+                <input type="text" id="seguimiento_individual" name="seguimiento_individual" required>
+            </div>
 
-        <hr>
+            <div class="form-group">
+                <label for="accion_tutorial">Seguimiento de la acción tutorial:</label>
+                <div class="radio-group">
+                    <input type="radio" id="entregado" name="accion_tutorial" value="1" required>
+                    <label for="entregado">Entregado</label>
+                    <input type="radio" id="no_entregado" name="accion_tutorial" value="0" required>
+                    <label for="no_entregado">No Entregado</label>
+                </div>
+            </div>
 
-        <label for="seguimiento">Seguimiento de tutoría individual del estudiante:</label><br>
-        <textarea id="nombres" name="nombres"></textarea><br><br>
+            <div class="form-group">
+                <label for="fecha">Fecha:</label>
+                <input type="date" id="fecha" name="fecha" required>
+            </div>
 
-        <p>
-            <label for="seguimiento">Seguimiento de la accion tutorial:</label><br>
-            <input type="radio" name="seguimiento" value="1"> Entregado
-            <input type="radio" name="seguimiento" value="0"> No Entregado
-        </p>
+            <div class="form-group">
+                <label for="causa_baja">Encuesta de causa de baja:</label>
+                <input type="text" id="causa_baja" name="causa_baja">
+            </div>
 
-        <label for="fecha">Fecha:</label><br>
-        <input type="date" name="fecha"><br><br>
+            <div class="form-group">
+                <label for="canalizacion">Canalización:</label>
+                <input type="text" id="canalizacion" name="canalizacion">
+            </div>
 
-        <label for="causa_baja">Encuesta de causa de baja:</label><br>
-        <textarea id="causa_baja" name="causa_baja"></textarea><br><br>
+            <div class="form-group">
+                <label for="file">Subir Evidencias:</label>
+                <input type="file" id="file" name="file" accept=".pdf, .doc, .docx, .txt">
+            </div>
 
-        <label for="canalizacion">Canalización:</label><br>
-        <textarea id="canalizacion" name="canalizacion"></textarea><br><br>
+            <div class="button">
+                <input type="submit" value="Enviar">
+            </div>
 
-        <input type="submit" value="Enviar">
         </div>
     </form>
 </body>
