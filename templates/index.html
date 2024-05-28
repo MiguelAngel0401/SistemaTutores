@@ -73,19 +73,21 @@
 
             <label for="tutor">Nombre del Tutor:</label><br>
             <select id="tutor" name="tutor">
-                <option value="Profe0">Jose Manuel Flores Juarez</option>
-                <option value="Profe1">Diana Lizeth Ahuatzi Reyes</option>
-                <option value="Profe2">Alfredo Garcia Ruiz</option>
-                <option value="Profe3">Elizabeth Cortes Ramos</option>
-                <option value="Profe4">Maricela Gress Roldan</option>
-                <option value="Profe5">Jose Marin Rugerio Atriano</option>
-                <option value="Profe6">Sonia Lopez Rodriguez</option>
-                <option value="Profe7">Margarita Lima Esteban</option>
-                <option value="Profe8">Juan Gabriel Valencia Muñoz</option>
-                <option value="Profe9">Miguel Torreon Hernandez</option>
-                <option value="Profe10">Francisco Lopez Briones</option>
-                <option value="Profe11">Aldo Giovani Luria Garcia</option>
+                <option value="Jose Manuel Flores Juarez">Jose Manuel Flores Juarez</option>
+                <option value="Diana Lizeth Ahuatzi Reyes">Diana Lizeth Ahuatzi Reyes</option>
+                <option value="Alfredo Garcia Ruiz">Alfredo Garcia Ruiz</option>
+                <option value="Elizabeth Cortes Ramos">Elizabeth Cortes Ramos</option>
+                <option value="Maricela Gress Roldan">Maricela Gress Roldan</option>
+                <option value="Jose Marin Rugerio Atriano">Jose Marin Rugerio Atriano</option>
+                <option value="Sonia Lopez Rodriguez">Sonia Lopez Rodriguez</option>
+                <option value="Margarita Lima Esteban">Margarita Lima Esteban</option>
+                <option value="Juan Gabriel Valencia Muñoz">Juan Gabriel Valencia Muñoz</option>
+                <option value="Miguel Torreon Hernandez">Miguel Torreon Hernandez</option>
+                <option value="Francisco Lopez Briones">Francisco Lopez Briones</option>
+                <option value="Aldo Giovani Luria Garcia">Aldo Giovani Luria Garcia</option>
+                <option value="Julia Gabriela Nieva Paredes">Julia Gabriela Nieva Paredes</option>
             </select>
+            
             <br><br>
 
             <div id="actividades-container">
@@ -148,128 +150,128 @@
         function addActividad() {
             const container = document.getElementById('actividades-container');
 
-            const div = document.createElement('div');
-            div.classList.add('actividad-item');
+   
+                const labelBaja = document.createElement('label');
+                labelBaja.setAttribute('for', `baja${alumnoCount}`);
+                labelBaja.textContent = 'Encuesta causa baja:';
+                div.appendChild(labelBaja);
+                div.appendChild(document.createElement('br'));
+                     const div = document.createElement('div');
+                div.classList.add('actividad-item');
 
-            const labelNombreActividad = document.createElement('label');
-            labelNombreActividad.setAttribute('for', `documentos${actividadCount}`);
-            labelNombreActividad.textContent = 'Nombre Actividad:';
-            div.appendChild(labelNombreActividad);
-            div.appendChild(document.createElement('br'));
+                const labelNombreActividad = document.createElement('label');
+                labelNombreActividad.setAttribute('for', `documentos${actividadCount}`);
+                labelNombreActividad.textContent = 'Nombre Actividad:';
+                div.appendChild(labelNombreActividad);
+                div.appendChild(document.createElement('br'));
 
-            const textareaNombreActividad = document.createElement('textarea');
-            textareaNombreActividad.setAttribute('id', `documentos${actividadCount}`);
-            textareaNombreActividad.setAttribute('name', 'documentos[]');
-            div.appendChild(textareaNombreActividad);
-            div.appendChild(document.createElement('br'));
-            div.appendChild(document.createElement('br'));
+                const textareaNombreActividad = document.createElement('textarea');
+                textareaNombreActividad.setAttribute('id', `documentos${actividadCount}`);
+                textareaNombreActividad.setAttribute('name', 'documentos[]');
+                div.appendChild(textareaNombreActividad);
+                div.appendChild(document.createElement('br'));
+                div.appendChild(document.createElement('br'));
 
-            const labelAsistencia = document.createElement('label');
-            labelAsistencia.setAttribute('for', `asistencia${actividadCount}`);
-            labelAsistencia.textContent = 'Lista de asistencia a sesión:';
-            div.appendChild(labelAsistencia);
-            div.appendChild(document.createElement('br'));
+                const labelAsistencia = document.createElement('label');
+                labelAsistencia.setAttribute('for', `asistencia${actividadCount}`);
+                labelAsistencia.textContent = 'Lista de asistencia a sesión:';
+                div.appendChild(labelAsistencia);
+                div.appendChild(document.createElement('br'));
 
-            const textareaAsistencia = document.createElement('textarea');
-            textareaAsistencia.setAttribute('id', `asistencia${actividadCount}`);
-            textareaAsistencia.setAttribute('name', 'asistencia[]');
-            div.appendChild(textareaAsistencia);
-            div.appendChild(document.createElement('br'));
-            div.appendChild(document.createElement('br'));
+                const textareaAsistencia = document.createElement('textarea');
+                textareaAsistencia.setAttribute('id', `asistencia${actividadCount}`);
+                textareaAsistencia.setAttribute('name', 'asistencia[]');
+                div.appendChild(textareaAsistencia);
+                div.appendChild(document.createElement('br'));
+                div.appendChild(document.createElement('br'));
 
-            container.appendChild(div);
+                container.appendChild(div);
 
-            actividadCount++;
-        }
+                actividadCount++;
+            }
+        </script>
+        <script>
+            let alumnoCount = 1;
+        
+            function addAlumno() {
+                const container = document.getElementById('nombres-container');
+        
+                const div = document.createElement('div');
+                div.classList.add('form-group');
+        
+                const labelNombre = document.createElement('label');
+                labelNombre.setAttribute('for', `nombres${alumnoCount}`);
+                labelNombre.textContent = 'Nombre:';
+                div.appendChild(labelNombre);
+        
+                const textareaNombre = document.createElement('textarea');
+                textareaNombre.setAttribute('id', `nombres${alumnoCount}`);
+                textareaNombre.setAttribute('name', 'nombres[]');
+                div.appendChild(textareaNombre);
+                div.appendChild(document.createElement('br'));
+                div.appendChild(document.createElement('br'));
+        
+                const radioBajaSi = document.createElement('input');
+                radioBajaSi.setAttribute('type', 'radio');
+                radioBajaSi.setAttribute('name', `baja${alumnoCount}`);
+                radioBajaSi.setAttribute('value', '1');
+                radioBajaSi.textContent = ' Si';
+                div.appendChild(radioBajaSi);
+                div.appendChild(document.createTextNode(' Si'));
+        
+                const radioBajaNo = document.createElement('input');
+                radioBajaNo.setAttribute('type', 'radio');
+                radioBajaNo.setAttribute('name', `baja${alumnoCount}`);
+                radioBajaNo.setAttribute('value', '0');
+                radioBajaNo.textContent = ' No';
+                div.appendChild(radioBajaNo);
+                div.appendChild(document.createTextNode(' No'));
+        
+                div.appendChild(document.createElement('p'));
+        
+                const labelCanalizacion = document.createElement('label');
+                labelCanalizacion.setAttribute('for', `canalizacion${alumnoCount}`);
+                labelCanalizacion.textContent = 'Canalización:';
+                div.appendChild(labelCanalizacion);
+                div.appendChild(document.createElement('br'));
+        
+                const radioCanalizacionSi = document.createElement('input');
+                radioCanalizacionSi.setAttribute('type', 'radio');
+                radioCanalizacionSi.setAttribute('name', `canalizacion${alumnoCount}`);
+                radioCanalizacionSi.setAttribute('value', '1');
+                radioCanalizacionSi.textContent = ' Si';
+                div.appendChild(radioCanalizacionSi);
+                div.appendChild(document.createTextNode(' Si'));
+        
+                const radioCanalizacionNo = document.createElement('input');
+                radioCanalizacionNo.setAttribute('type', 'radio');
+                radioCanalizacionNo.setAttribute('name', `canalizacion${alumnoCount}`);
+                radioCanalizacionNo.setAttribute('value', '0');
+                radioCanalizacionNo.textContent = ' No';
+                div.appendChild(radioCanalizacionNo);
+                div.appendChild(document.createTextNode(' No'));
+        
+                div.appendChild(document.createElement('p'));
+        
+                // Agregar campo para Materias Acreditadas en Extraordinario
+                const labelMaterias = document.createElement('label');
+                labelMaterias.setAttribute('for', `materias${alumnoCount}`);
+                labelMaterias.textContent = 'Materias Acreditadas en Extraordinario:';
+                div.appendChild(labelMaterias);
+        
+                const textareaMaterias = document.createElement('textarea');
+                textareaMaterias.setAttribute('id', `materias${alumnoCount}`);
+                textareaMaterias.setAttribute('name', 'materias[]');
+                div.appendChild(textareaMaterias);
+                div.appendChild(document.createElement('br'));
+                div.appendChild(document.createElement('br'));
+        
+                container.appendChild(div);
+        
+                alumnoCount++;
+            }
+        </script>
     </script>
-    <script>
-        let alumnoCount = 1;
-    
-        function addAlumno() {
-            const container = document.getElementById('nombres-container');
-    
-            const div = document.createElement('div');
-            div.classList.add('form-group');
-    
-            const labelNombre = document.createElement('label');
-            labelNombre.setAttribute('for', `nombres${alumnoCount}`);
-            labelNombre.textContent = 'Nombre:';
-            div.appendChild(labelNombre);
-    
-            const textareaNombre = document.createElement('textarea');
-            textareaNombre.setAttribute('id', `nombres${alumnoCount}`);
-            textareaNombre.setAttribute('name', 'nombres[]');
-            div.appendChild(textareaNombre);
-            div.appendChild(document.createElement('br'));
-            div.appendChild(document.createElement('br'));
-    
-            const labelBaja = document.createElement('label');
-            labelBaja.setAttribute('for', `baja${alumnoCount}`);
-            labelBaja.textContent = 'Encuesta causa baja:';
-            div.appendChild(labelBaja);
-            div.appendChild(document.createElement('br'));
-    
-            const radioBajaSi = document.createElement('input');
-            radioBajaSi.setAttribute('type', 'radio');
-            radioBajaSi.setAttribute('name', `baja${alumnoCount}`);
-            radioBajaSi.setAttribute('value', '1');
-            radioBajaSi.textContent = ' Si';
-            div.appendChild(radioBajaSi);
-            div.appendChild(document.createTextNode(' Si'));
-    
-            const radioBajaNo = document.createElement('input');
-            radioBajaNo.setAttribute('type', 'radio');
-            radioBajaNo.setAttribute('name', `baja${alumnoCount}`);
-            radioBajaNo.setAttribute('value', '0');
-            radioBajaNo.textContent = ' No';
-            div.appendChild(radioBajaNo);
-            div.appendChild(document.createTextNode(' No'));
-    
-            div.appendChild(document.createElement('p'));
-    
-            const labelCanalizacion = document.createElement('label');
-            labelCanalizacion.setAttribute('for', `canalizacion${alumnoCount}`);
-            labelCanalizacion.textContent = 'Canalización:';
-            div.appendChild(labelCanalizacion);
-            div.appendChild(document.createElement('br'));
-    
-            const radioCanalizacionSi = document.createElement('input');
-            radioCanalizacionSi.setAttribute('type', 'radio');
-            radioCanalizacionSi.setAttribute('name', `canalizacion${alumnoCount}`);
-            radioCanalizacionSi.setAttribute('value', '1');
-            radioCanalizacionSi.textContent = ' Si';
-            div.appendChild(radioCanalizacionSi);
-            div.appendChild(document.createTextNode(' Si'));
-    
-            const radioCanalizacionNo = document.createElement('input');
-            radioCanalizacionNo.setAttribute('type', 'radio');
-            radioCanalizacionNo.setAttribute('name', `canalizacion${alumnoCount}`);
-            radioCanalizacionNo.setAttribute('value', '0');
-            radioCanalizacionNo.textContent = ' No';
-            div.appendChild(radioCanalizacionNo);
-            div.appendChild(document.createTextNode(' No'));
-    
-            div.appendChild(document.createElement('p'));
-    
-            // Agregar campo para Materias Acreditadas en Extraordinario
-            const labelMaterias = document.createElement('label');
-            labelMaterias.setAttribute('for', `materias${alumnoCount}`);
-            labelMaterias.textContent = 'Materias Acreditadas en Extraordinario:';
-            div.appendChild(labelMaterias);
-    
-            const textareaMaterias = document.createElement('textarea');
-            textareaMaterias.setAttribute('id', `materias${alumnoCount}`);
-            textareaMaterias.setAttribute('name', 'materias[]');
-            div.appendChild(textareaMaterias);
-            div.appendChild(document.createElement('br'));
-            div.appendChild(document.createElement('br'));
-    
-            container.appendChild(div);
-    
-            alumnoCount++;
-        }
-    </script>
-</script>
     <!-- <script>
         function addAlumno() {
             const container = document.getElementById('nombres-container');
