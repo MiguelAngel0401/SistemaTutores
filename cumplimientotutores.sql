@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 20-05-2024 a las 19:51:36
+-- Tiempo de generación: 28-05-2024 a las 02:44:52
 -- Versión del servidor: 10.4.32-MariaDB
 -- Versión de PHP: 8.2.12
 
@@ -62,7 +62,8 @@ CREATE TABLE `entregables` (
   `Grupo` varchar(2) DEFAULT NULL,
   `idActividad` int(11) DEFAULT NULL,
   `idAlumno` int(11) DEFAULT NULL,
-  `id_tutor` int(11) DEFAULT NULL
+  `id_tutor` int(11) DEFAULT NULL,
+  `Seguimiento` binary(1) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------

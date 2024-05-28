@@ -4,6 +4,299 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Formulario de Reporte de Tutores</title>
+    <style>
+        body {
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+            background-color:whitesmoke;
+        }
+        .form-container {
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 15px;
+            max-width: 500px;
+            margin: auto;
+            box-shadow: 0 20px 20px rgba(0, 0, 0, 0.8);
+        }
+
+        .form-container .form-group label {
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <center>
+        <h1>Formulario de Reporte de Tutores</h1>
+    </center>
+    <form action="/submit" method="POST">
+        <div class="form-container">
+            <hr>
+            <center>
+                <h2>Cumplimiento de Tutor</h2>
+            </center>
+            <label for="carrera">Carrera:</label><br>
+            <select id="carrera" name="carrera">
+                <option value="tsu0">Tecnologias de la Informacion Area Desarrollo de Software Multiplataforma</option>
+                <option value="tsu1">Tecnologias de la Informacion Area Infraestructura de Redes Digitales</option>
+                <option value="tsu2">Tecnologias de la Informacion Area Entornos Virtuales y Negocios Digitales</option>
+                <option value="tsu3">Ingenieria en Desarrollo y Gestion de Software</option>
+                <option value="tsu4">Ingenieria en Redes Inteligentes y Ciberseguridad</option>
+                <option value="tsu5">Ingenieria en Entornos Virtuales y Negocios Digitales</option>
+            </select>
+            <br>
+
+            <label for="grupo">Grupo:</label><br>
+            <select id="grupo" name="grupo">
+                <option value="grupo0">1A</option>
+                <option value="grupo1">1B</option>
+                <option value="grupo2">2A</option>
+                <option value="grupo3">2B</option>
+                <option value="grupo4">3A</option>
+                <option value="grupo5">3B</option>
+                <option value="grupo6">4A</option>
+                <option value="grupo7">4B</option>
+                <option value="grupo8">5A</option>
+                <option value="grupo9">5B</option>
+                <option value="grupo10">6A</option>
+                <option value="grupo11">6B</option>
+                <option value="grupo12">7A</option>
+                <option value="grupo13">7B</option>
+                <option value="grupo14">8A</option>
+                <option value="grupo15">8B</option>
+                <option value="grupo16">9A</option>
+                <option value="grupo17">9B</option>
+                <option value="grupo18">10A</option>
+                <option value="grupo19">10B</option>
+            </select>
+            <br>
+
+            <label for="tutor">Nombre del Tutor:</label><br>
+            <select id="tutor" name="tutor">
+                <option value="Profe0">Jose Manuel Flores Juarez</option>
+                <option value="Profe1">Diana Lizeth Ahuatzi Reyes</option>
+                <option value="Profe2">Alfredo Garcia Ruiz</option>
+                <option value="Profe3">Elizabeth Cortes Ramos</option>
+                <option value="Profe4">Maricela Gress Roldan</option>
+                <option value="Profe5">Jose Marin Rugerio Atriano</option>
+                <option value="Profe6">Sonia Lopez Rodriguez</option>
+                <option value="Profe7">Margarita Lima Esteban</option>
+                <option value="Profe8">Juan Gabriel Valencia Muñoz</option>
+                <option value="Profe9">Miguel Torreon Hernandez</option>
+                <option value="Profe10">Francisco Lopez Briones</option>
+                <option value="Profe11">Aldo Giovani Luria Garcia</option>
+            </select>
+            <br><br>
+
+            <div id="actividades-container">
+                <div class="actividad-item">
+                    <label for="documentos">Nombre Actividad:</label><br>
+                    <textarea id="documentos" name="documentos[]"></textarea><br><br>
+
+                    <label for="asistencia">Lista de asistencia a sesión:</label><br>
+                    <textarea id="asistencia" name="asistencia[]"></textarea><br><br>
+                </div>
+            </div>
+
+            <button type="button" onclick="addActividad()">Agregar Actividad</button>
+
+            <p></p>
+            <label for="seguimiento">Seguimiento de la accion tutorial:</label><br>
+            <input type="radio" name="seguimiento" value="1"> Entregado
+            <input type="radio" name="seguimiento" value="0"> No Entregado
+            </p>
+            <label for="fecha">Fecha:</label><br>
+            <input type="date" name="fecha"><br><br>
+
+            <hr>
+
+            <center>
+                <h2>Seguimiento de tutoría individual del estudiante</h2>
+            </center>
+
+            <div id="nombres-container">
+                <div>
+                    <label for="seguimiento">Nombre:</label><br>
+                    <textarea id="nombres" name="nombres[]"></textarea><br><br>
+
+                    <label for="seguimiento">Encuesta causa baja:</label><br>
+                    <input type="radio" name="baja[]" value="1"> Si
+                    <input type="radio" name="baja[]" value="0"> No
+
+                    <p></p>
+
+                    <label for="seguimiento">Canalización:</label><br>
+                    <input type="radio" name="canalizacion[]" value="1"> Si
+                    <input type="radio" name="canalizacion[]" value="0"> No
+                    <p></p>
+
+                    <label for="seguimiento">Materias Acreditadas en Extraordinario:</label><br>
+                    <textarea id="nombres" name="materias[]"></textarea><br><br>
+                </div>
+            </div>
+
+            <button type="button" onclick="addAlumno()">Agregar Alumno</button>
+            <hr>
+
+            <input type="submit" value="Enviar">
+        </div>
+    </form>
+
+    <script>
+        let actividadCount = 1;
+
+        function addActividad() {
+            const container = document.getElementById('actividades-container');
+
+            const div = document.createElement('div');
+            div.classList.add('actividad-item');
+
+            const labelNombreActividad = document.createElement('label');
+            labelNombreActividad.setAttribute('for', `documentos${actividadCount}`);
+            labelNombreActividad.textContent = 'Nombre Actividad:';
+            div.appendChild(labelNombreActividad);
+            div.appendChild(document.createElement('br'));
+
+            const textareaNombreActividad = document.createElement('textarea');
+            textareaNombreActividad.setAttribute('id', `documentos${actividadCount}`);
+            textareaNombreActividad.setAttribute('name', 'documentos[]');
+            div.appendChild(textareaNombreActividad);
+            div.appendChild(document.createElement('br'));
+            div.appendChild(document.createElement('br'));
+
+            const labelAsistencia = document.createElement('label');
+            labelAsistencia.setAttribute('for', `asistencia${actividadCount}`);
+            labelAsistencia.textContent = 'Lista de asistencia a sesión:';
+            div.appendChild(labelAsistencia);
+            div.appendChild(document.createElement('br'));
+
+            const textareaAsistencia = document.createElement('textarea');
+            textareaAsistencia.setAttribute('id', `asistencia${actividadCount}`);
+            textareaAsistencia.setAttribute('name', 'asistencia[]');
+            div.appendChild(textareaAsistencia);
+            div.appendChild(document.createElement('br'));
+            div.appendChild(document.createElement('br'));
+
+            container.appendChild(div);
+
+            actividadCount++;
+        }
+    </script>
+    <script>
+        let alumnoCount = 1;
+    
+        function addAlumno() {
+            const container = document.getElementById('nombres-container');
+    
+            const div = document.createElement('div');
+            div.classList.add('form-group');
+    
+            const labelNombre = document.createElement('label');
+            labelNombre.setAttribute('for', `nombres${alumnoCount}`);
+            labelNombre.textContent = 'Nombre:';
+            div.appendChild(labelNombre);
+    
+            const textareaNombre = document.createElement('textarea');
+            textareaNombre.setAttribute('id', `nombres${alumnoCount}`);
+            textareaNombre.setAttribute('name', 'nombres[]');
+            div.appendChild(textareaNombre);
+            div.appendChild(document.createElement('br'));
+            div.appendChild(document.createElement('br'));
+    
+            const labelBaja = document.createElement('label');
+            labelBaja.setAttribute('for', `baja${alumnoCount}`);
+            labelBaja.textContent = 'Encuesta causa baja:';
+            div.appendChild(labelBaja);
+            div.appendChild(document.createElement('br'));
+    
+            const radioBajaSi = document.createElement('input');
+            radioBajaSi.setAttribute('type', 'radio');
+            radioBajaSi.setAttribute('name', `baja${alumnoCount}`);
+            radioBajaSi.setAttribute('value', '1');
+            radioBajaSi.textContent = ' Si';
+            div.appendChild(radioBajaSi);
+            div.appendChild(document.createTextNode(' Si'));
+    
+            const radioBajaNo = document.createElement('input');
+            radioBajaNo.setAttribute('type', 'radio');
+            radioBajaNo.setAttribute('name', `baja${alumnoCount}`);
+            radioBajaNo.setAttribute('value', '0');
+            radioBajaNo.textContent = ' No';
+            div.appendChild(radioBajaNo);
+            div.appendChild(document.createTextNode(' No'));
+    
+            div.appendChild(document.createElement('p'));
+    
+            const labelCanalizacion = document.createElement('label');
+            labelCanalizacion.setAttribute('for', `canalizacion${alumnoCount}`);
+            labelCanalizacion.textContent = 'Canalización:';
+            div.appendChild(labelCanalizacion);
+            div.appendChild(document.createElement('br'));
+    
+            const radioCanalizacionSi = document.createElement('input');
+            radioCanalizacionSi.setAttribute('type', 'radio');
+            radioCanalizacionSi.setAttribute('name', `canalizacion${alumnoCount}`);
+            radioCanalizacionSi.setAttribute('value', '1');
+            radioCanalizacionSi.textContent = ' Si';
+            div.appendChild(radioCanalizacionSi);
+            div.appendChild(document.createTextNode(' Si'));
+    
+            const radioCanalizacionNo = document.createElement('input');
+            radioCanalizacionNo.setAttribute('type', 'radio');
+            radioCanalizacionNo.setAttribute('name', `canalizacion${alumnoCount}`);
+            radioCanalizacionNo.setAttribute('value', '0');
+            radioCanalizacionNo.textContent = ' No';
+            div.appendChild(radioCanalizacionNo);
+            div.appendChild(document.createTextNode(' No'));
+    
+            div.appendChild(document.createElement('p'));
+    
+            // Agregar campo para Materias Acreditadas en Extraordinario
+            const labelMaterias = document.createElement('label');
+            labelMaterias.setAttribute('for', `materias${alumnoCount}`);
+            labelMaterias.textContent = 'Materias Acreditadas en Extraordinario:';
+            div.appendChild(labelMaterias);
+    
+            const textareaMaterias = document.createElement('textarea');
+            textareaMaterias.setAttribute('id', `materias${alumnoCount}`);
+            textareaMaterias.setAttribute('name', 'materias[]');
+            div.appendChild(textareaMaterias);
+            div.appendChild(document.createElement('br'));
+            div.appendChild(document.createElement('br'));
+    
+            container.appendChild(div);
+    
+            alumnoCount++;
+        }
+    </script>
+</script>
+    <!-- <script>
+        function addAlumno() {
+            const container = document.getElementById('nombres-container');
+            const newActividad = document.createElement('div');
+            newActividad.classList.add('actividad-item');
+            newActividad.innerHTML = `
+                <label for="documentos">Nombre Actividad:</label><br>
+                <textarea id="documentos" name="documentos[]"></textarea><br><br>
+
+                <label for="asistencia">Lista de asistencia a sesión:</label><br>
+                <textarea id="asistencia" name="asistencia[]"></textarea><br><br>
+            `;
+            container.appendChild(newActividad);
+        }
+    </script> -->
+</body>
+</html>
+
+
+
+
+<!-- <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Formulario de Reporte de Tutores</title>
     <link rel="stylesheet" href="../static/css/styles.css">
 </head>
 <body>
@@ -136,4 +429,4 @@
         </div>
     </form>
 </body>
-</html>
+</html> -->
